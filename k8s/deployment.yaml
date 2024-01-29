@@ -3,11 +3,9 @@ kind: Deployment
 metadata:
   name: example-nginx
   annotations:
-    app.komodor.com/app: https://github.com/dirghayud/sample-application
-    app.komodor.com/app.ref: ~
-    app.komodor.com/infra: https://github.com/dirghayud/sample-application
-    app.komodor.com/infra.ref: ~
+    app.komodor.com/deploy.link.app-diff-link: 'https://github.com/dirghayud/sample-application/compare/main%5E...main'
     app.komodor.com/deploy.link.applicationlink: 'https://github.com/dirghayud/sample-application'
+    app.komodor.com/service.link.appdifflink: 'https://github.com/dirghayud/sample-application/compare/main^...main'
     app.komodor.com/service.link.applicationlink: 'https://github.com/dirghayud/sample-application'
 spec:
   selector:
@@ -20,7 +18,7 @@ spec:
         run: example-nginx
     spec:
       containers:
-        - name: example-nginx
+        - name: example-nginx-v1
           image: nginx:latest
           ports:
             - containerPort: 80
