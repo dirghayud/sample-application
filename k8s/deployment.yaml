@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-nginx
+  annotations:
+    app.komodor.com/app: https://github.com/dirghayud/sample-application
+    app.komodor.com/app.ref: b724f49e1fa088c01f15047ee626bdff5eaedf44
+    app.komodor.com/infra: https://github.com/dirghayud/sample-application
+    app.komodor.com/infra.ref: b724f49e1fa088c01f15047ee626bdff5eaedf44
+    app.komodor.com/deploy.link.applicationlink: 'https://github.com/dirghayud/sample-application'
+    app.komodor.com/service.link.applicationlink: 'https://github.com/dirghayud/sample-application'
+spec:
+  selector:
+    matchLabels:
+      run: example-nginx
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: example-nginx
+    spec:
+      containers:
+        - name: example-nginx
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: example-nginx
+  name: example-nginx-svc
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: example-nginx
