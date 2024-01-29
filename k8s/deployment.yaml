@@ -4,9 +4,9 @@ metadata:
   name: example-nginx
   annotations:
     app.komodor.com/app: https://github.com/dirghayud/sample-application
-    app.komodor.com/app.ref: b724f49e1fa088c01f15047ee626bdff5eaedf44
+    app.komodor.com/app.ref: ~
     app.komodor.com/infra: https://github.com/dirghayud/sample-application
-    app.komodor.com/infra.ref: b724f49e1fa088c01f15047ee626bdff5eaedf44
+    app.komodor.com/infra.ref: ~
     app.komodor.com/deploy.link.applicationlink: 'https://github.com/dirghayud/sample-application'
     app.komodor.com/service.link.applicationlink: 'https://github.com/dirghayud/sample-application'
 spec:
